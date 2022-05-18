@@ -1,0 +1,12 @@
+<launch>   
+    <node pkg="ntrip_ros" type="ntripclient.py" name="ntrip_client" output="screen">
+        <param name="ntrip_server" value="rtk2go.com:2101" />
+        <param name="ntrip_user" value="navaneethpiccellar3@gmail.com" />
+        <param name="ntrip_pass" value="none" />
+        <param name="ntrip_stream" value="meva" />
+        <param name="nmea_gga" value="GPGGA,%02d%02d%04.2f,5214.4449,N,00650.2469,E,1,24,0.6,38.9,M,84.4,M,0,0" />
+        <param name="rtcm_topic" value="/rtcm" />
+    </node>
+</launch>
+
+
