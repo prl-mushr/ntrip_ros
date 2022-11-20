@@ -52,6 +52,7 @@ class ntripconnect(Thread):
         buf = ""
         rmsg = RTCM()
         print("started")
+        r = rospy.Rate(10)
         while not self.stop:
             data = response.read(1)
             if data!=chr(211).encode("latin-1"):
@@ -68,8 +69,9 @@ class ntripconnect(Thread):
             rmsg.header.seq += 1
             rmsg.header.stamp = rospy.get_rostime()
             rmsg.data = data + chr(l1).encode("latin-1") + chr(l2).encode("latin-1") + pkt + parity
-            print("got here")
+            # print("got here")
             self.ntc.pub.publish(rmsg)
+            r.sleep()
 
         connection.close()
 
